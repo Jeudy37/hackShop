@@ -47,6 +47,7 @@ passport.use(
                         
                         prenom: profile.name.familyName,
                         googleId: profile.id,
+                        imageUrl: profile.photos[0].value,
                     })
                         .then((newUser) => {
                             console.log('new user created:', newUser);

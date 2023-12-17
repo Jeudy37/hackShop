@@ -21,6 +21,11 @@ module.exports=(sequelize)=>{
             allowNull:false,
             defaultValue:''
         },
+        imageUrl:{
+            type:DataTypes.STRING(150),
+            allowNull:true,
+            defaultValue:''
+        },
        
         password:{
             type:DataTypes.STRING(64),

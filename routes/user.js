@@ -25,7 +25,40 @@ router.get('',async(req,res)=>{
     }
 
 })
+router.get('/:id',async(req,res)=>{
+    const user_id=parseInt(req.params.id)
+    try{
+        if(!user_id){
+            return res.status(400).json({message:'missing parameter '})
+        }
 
+        let user= await User.findOne({where: {user_id:user_id},row:true})
+        if(user ==null){
+            return res.status(400).json({message:'this user doesnt excist '})
+        }
+
+        return res.status(200).json({message:`the user is `,data:user})
+    }catch(err){
+        console.log(err)
+        return res.status(500).json({message:'error database'})
+    }
+
+})
+router.delete('/:id',async(req,res)=>{
+    const id =parseInt(req.params.id)
+    try{
+        if(!id){
+            return res.status(400).json({message:'missing parameter'})
+            
+        }
+
+        await User.destroy({where:{user_id:id},force:true})
+        return res.status(204).json({message:'user delete with success'})
+    }catch(err){
+        console.log(err)
+        return res.status(500).json({message:'error database'})
+    }
+})
 router.post('',async(req,res)=>{
     const {
             
