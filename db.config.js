@@ -3,7 +3,7 @@ const { Sequelize }= require("sequelize")
 const password = process.env.DB_PASSWORD ? process.env.DB_PASSWORD.toString() : undefined;
 
 let sequelize =new Sequelize(
-    "hackaton","postgres","",{
+    "hackaton","postgres","qwerty",{
         host:process.env.DB_HOST,
         port:process.env.DB_PORT,
         dialect:'postgres',
